@@ -9,37 +9,74 @@ namespace ClassRoom
     public class KlasseRum
     //INSTANCEFIELDS
     {
-        private string _klassenavn;
-        private List<Studerende> _klasseliste;
-        private DateTime _semesterstart;
+        private string _klasseNavn;
+        private List<Studerende> _klasseListe;
+        private DateTime _semesterStart;
 
-        //CONSTRUCTOR
-        public KlasseRum(String KlasseNavn, List<Studerende> KlasseList, DateTime SemesterStart)
-
+        //DEFAULT CONSTRUCTOR
+        public KlasseRum()
         {
-            KlasseNavn = _klassenavn;
-            KlasseList = _klasseliste;
-            SemesterStart = _semesterstart;
+            _klasseListe = new List<Studerende>();
         }
         //PROPERTIES
-        public string Klassenavn
+        public string KlasseNavn
         {
-            get { return _klassenavn; }
-            set { _klassenavn = value; }
+            get { return _klasseNavn; }
+            set { _klasseNavn = value; }
 
         }
-        public List<Studerende> klasseliste
+        public List<Studerende> KlasseListe
         {
-            get { return _klasseliste; }
-            set { _klasseliste = value; }
+            get { return _klasseListe; }
+            set { _klasseListe = value; }
         }
 
-        public DateTime semesterstart
+        public DateTime SemesterStart
         {
-            get { return _semesterstart; }
-            set { _semesterstart = value; }
+            get { return _semesterStart; }
+            set { _semesterStart = value; }
+        }
+        public void Årstid()
+        {
+            int Vinter = 0;
+            int Forår = 0;
+            int Sommer = 0;
+            int Efterår = 0;
+
+            foreach (var Studerende in KlasseListe)
+            {
+                if (Studerende.Årstid() == "Vinter")
+                {
+                    Vinter += 1;
+                }
+
+                if (Studerende.Årstid() == "Forår")
+                {
+                    Forår += 1;
+                }
+
+                if (Studerende.Årstid() == "Sommer")
+                {
+                    Sommer += 1;
+                }
+
+                if (Studerende.Årstid() == "Efterår")
+                {
+                    Efterår += 1;
+                }
+
+            }
+            Console.WriteLine($"Vinter perioden: {Vinter}");
+            Console.WriteLine($"Foråret: {Forår}");
+            Console.WriteLine($"Sommer perioden: {Sommer}");
+            Console.WriteLine($"Efteråret {Efterår}");
+
         }
 
+            public override string ToString()
+        {
+            return $"{ KlasseNavn}  { KlasseListe} { SemesterStart}"; 
+        }
     }
 }
 
